@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,user-scalable=no">
+    <title>Instagram Portfolio</title>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700|Kaushan+Script|Montserrat' rel='stylesheet' type='text/css'>
+    <link rel="stylesheets" type="text/css" href="stylesheets/posts.scss">
+    <script type="text/javascript" src="js/modernizr.js"></script>
+</head>
+<body>
+    <header>
+        <%= image_tag "field.jpg" %>
+        <div >
+           <%= link_to "Michael Quintero", pages_about_path, {class: 'name fancy-font'} %>
+        </div>
+        <div class="titles">
+            <h1>Hello! <span>I'm Michael</span></h1>
+            <h2>I love to travel all around the world and design beautiful things</h2>
+        </div>
+        <div class="social">
+            <a class="facebook" href="#">Facebook</a>
+            <a class="twitter" href="#">Twitter</a>
+            <a class="instagram" href="#">Instagram</a>
+        </div>
+    </header>
+    <!-- navbar -->
+    <div class="container-fluid">
+    <div class="row">
+        <!-- <div class="col-3 col-sm-2 col-md-2 col-lg-1 col-xl-1"> -->
+        <div class="col-xl-1 col-lg-1 col-sm-2 col-md-2 col-3">
+            <nav class="nav navbar-light navbar-toggleable-sm">
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarWEX" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse flex-column mt-md-0 mt-4 pt-md-0 pt-4" id="navbarWEX">
+                    <a class="nav-link navbar-brand active" href="~/Views/Forms/ControlPanel.cshtml"><span class="fa fa-home"></span></a>
+
+                    <%= link_to "Instagram", pages_instagram_path, {class: 'nav-link'} %>
+                    <%= link_to "Gallery", pages_gallery_path, {class: 'nav-link'} %>
+                    <%= link_to "Contact", pages_contact_path, {class: 'nav-link'} %> 
+                </div>
+            </nav>
+        </div>
+       <!-- <div class="col-9 col-sm-10 col-md-10 col-lg-11 col-xl-11"> -->
+        <div class="col-xl-11 col-lg-11 col-sm-10 col-md-10 col-9">
+            <h2>Hello There</h2>
+        </div>
+    </div>
+</div>
+    <!--end of navbar -->
+    <section class="instagram-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="instagram-content">
+                        <h3>Latest Photos</h3>
+                        <div class="row photos-wrap">
+                        <!-- Instafeed target div -->
+                        <div id="instafeed"></div>
+                        <!-- The following HTML will be our template inside instafeed -->
+                        <!-- <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="photo-box">
+                                <div class="image-wrap">
+                                    <img src="images/test_img.jpg">
+                                    <div class="likes">309 Likes</div>
+                                </div>
+                                <div class="description">
+                                    Fantastic Architecture #architecture #testing
+                                    <div class="date">September 16, 2014</div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                <h4>Get in touch</h4>
+                <p class="about-text">I shoot, design and write. Don't hesitate and get in touch with me if you need some creative work done. I always work to achieve my best and fulfil client needs</p>
+                <%= link_to "Contact Now", pages_contact_path, {class: 'contact-now-btn'} %>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <section class="footer-bottom">
+        2018 &copy; Michael Quintero. All rights reserved.
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/instafeed.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
